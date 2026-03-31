@@ -1,0 +1,688 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Admin Applications Page - Professional Government Style */
+.admin-applications-page {
+  width: 100%;
+  padding: 0;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Navbar Style Header */
+.admin-applications-page .admin-app-header {
+  background: rgb(238, 239, 243);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 8px 32px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-applications-page .header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.admin-applications-page .govt-logo {
+  height: 55px;
+  width: auto;
+  border-right: 2px solid #e2e8f0;
+  padding-right: 24px;
+}
+
+.admin-applications-page .header-title h1 {
+  color: #0f172a;
+  font-size: 22px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.admin-applications-page .header-title .govt-tag {
+  color: #2d6a4f;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.admin-applications-page .header-title .panchayat-name {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.admin-applications-page .header-title p {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.admin-applications-page .admin-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 10px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 40px;
+}
+
+.admin-applications-page .badge-icon {
+  font-size: 32px;
+}
+
+.admin-applications-page .badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-applications-page .badge-text strong {
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.admin-applications-page .badge-text small {
+  color: #64748b;
+  font-size: 11px;
+}
+/* Stats Bar - Horizontal Layout */
+.admin-applications-page .app-stats-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding: 0 32px;
+}
+
+.admin-applications-page .stat-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 16px 24px;
+  text-align: center;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-applications-page .stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .stat-item:hover {
+  border-color: #2d6a4f;
+  transform: translateY(-2px);
+}
+
+.admin-applications-page .stat-info {
+  text-align: left;
+}
+
+.admin-applications-page .stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.admin-applications-page .stat-label {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.admin-applications-page .stat-icon {
+  font-size: 32px;
+  opacity: 0.7;
+}
+
+/* Individual stat item border colors */
+.admin-applications-page .stat-item:first-child::before {
+  background: #0f172a;
+}
+
+.admin-applications-page .stat-item:nth-child(2)::before {
+  background: #2d6a4f;
+}
+
+.admin-applications-page .stat-item:nth-child(3)::before {
+  background: #d97706;
+}
+
+.admin-applications-page .stat-item:nth-child(4)::before {
+  background: #0891b2;
+}
+
+/* Filters - Inline Layout */
+.admin-applications-page .app-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  padding: 0 32px;
+}
+
+.admin-applications-page .filter-group {
+  flex: 1;
+  max-width: 280px;
+}
+
+.admin-applications-page .filter-group label {
+  display: none;
+}
+
+.admin-applications-page .filter-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  background: white;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .filter-group select:focus {
+  outline: none;
+  border-color: #2d6a4f;
+}
+
+.admin-applications-page .search-group {
+  flex: 2;
+  max-width: 400px;
+}
+
+.admin-applications-page .search-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  background: white;
+}
+
+.admin-applications-page .search-group input:focus {
+  outline: none;
+  border-color: #2d6a4f;
+}
+
+.admin-applications-page .search-group input::placeholder {
+  color: #94a3b8;
+}
+
+/* Table Container */
+.admin-applications-page .applications-table-container {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow-x: auto;
+  margin: 0 32px;
+}
+
+.admin-applications-page .admin-app-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.admin-applications-page .admin-app-table th {
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-applications-page .admin-app-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #334155;
+}
+
+.admin-applications-page .admin-app-table tr:hover {
+  background: #fafcff;
+}
+
+/* Photo Cell */
+.admin-applications-page .photo-cell {
+  width: 60px;
+  text-align: center;
+}
+
+.admin-applications-page .applicant-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  object-fit: cover;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .applicant-thumb:hover {
+  transform: scale(1.05);
+  border-color: #2d6a4f;
+}
+
+.admin-applications-page .no-photo {
+  width: 48px;
+  height: 48px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #94a3b8;
+}
+
+/* Certificate Type Badge */
+.admin-applications-page .cert-type {
+  background: #2d6a4f;
+  color: white;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Documents Cell */
+.admin-applications-page .docs-cell {
+  max-width: 150px;
+}
+
+.admin-applications-page .doc-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-applications-page .doc-link {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+  transition: all 0.2s;
+  border-radius: 8px;
+  color: #334155;
+}
+
+.admin-applications-page .doc-link:hover {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: white;
+}
+
+/* Actions Cell */
+.admin-applications-page .actions-cell {
+  min-width: 130px;
+}
+
+.admin-applications-page .approve-action {
+  background: #2d6a4f;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .reject-action {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .approve-action:hover {
+  background: #1e4a2e;
+  transform: translateY(-1px);
+}
+
+.admin-applications-page .reject-action:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+/* Status Badges */
+.admin-applications-page .approved-text {
+  color: #2d6a4f;
+  font-weight: 600;
+  background: #e8f5e9;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.admin-applications-page .rejected-text {
+  color: #dc2626;
+  font-weight: 600;
+  background: #fef2f2;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.admin-applications-page .pending-text {
+  color: #d97706;
+  font-weight: 600;
+  background: #fffbeb;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+/* Image Modal */
+.admin-applications-page .image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.admin-applications-page .modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.admin-applications-page .modal-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  border: 3px solid white;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.admin-applications-page .close-modal {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .close-modal:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Confirm Modal */
+.admin-applications-page .confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  backdrop-filter: blur(4px);
+}
+
+.admin-applications-page .confirm-modal {
+  background: white;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.admin-applications-page .confirm-modal h3 {
+  color: #0f172a;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.admin-applications-page .confirm-modal p {
+  margin-bottom: 24px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.admin-applications-page .confirm-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-applications-page .confirm-yes {
+  flex: 1;
+  padding: 12px;
+  background: #2d6a4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .confirm-no {
+  flex: 1;
+  padding: 12px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.admin-applications-page .confirm-yes:hover {
+  background: #1e4a2e;
+}
+
+.admin-applications-page .confirm-no:hover {
+  background: #e2e8f0;
+}
+
+/* Loading State */
+.admin-applications-page .loading-state {
+  text-align: center;
+  padding: 60px;
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* Empty State */
+.admin-applications-page .empty-state {
+  text-align: center;
+  padding: 60px;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 1024px) {
+  .admin-applications-page .admin-app-header {
+    padding: 16px 24px;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .admin-applications-page .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .admin-applications-page .govt-logo {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding-right: 0;
+    padding-bottom: 16px;
+  }
+  
+  .admin-applications-page .admin-badge {
+    align-self: flex-start;
+  }
+  
+  .admin-applications-page .app-stats-bar {
+    padding: 0 24px;
+    flex-wrap: wrap;
+  }
+  
+  .admin-applications-page .stat-item {
+    min-width: calc(50% - 8px);
+  }
+  
+  .admin-applications-page .app-filters {
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .admin-applications-page .filter-group,
+  .admin-applications-page .search-group {
+    max-width: 100%;
+  }
+  
+  .admin-applications-page .applications-table-container {
+    margin: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-applications-page .admin-app-header {
+    padding: 16px 20px;
+  }
+  
+  .admin-applications-page .header-title h1 {
+    font-size: 18px;
+  }
+  
+  .admin-applications-page .header-title .panchayat-name {
+    font-size: 16px;
+  }
+  
+  .admin-applications-page .govt-logo {
+    height: 45px;
+  }
+  
+  .admin-applications-page .app-stats-bar {
+    padding: 0 20px;
+    flex-direction: column;
+  }
+  
+  .admin-applications-page .stat-item {
+    min-width: 100%;
+  }
+  
+  .admin-applications-page .app-filters {
+    padding: 0 20px;
+  }
+  
+  .admin-applications-page .applications-table-container {
+    margin: 0 20px;
+  }
+  
+  .admin-applications-page .confirm-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-applications-page .admin-app-header {
+    padding: 12px 16px;
+  }
+  
+  .admin-applications-page .header-title p {
+    font-size: 11px;
+  }
+  
+  .admin-applications-page .badge-icon {
+    font-size: 28px;
+  }
+  
+  .admin-applications-page .badge-text strong {
+    font-size: 13px;
+  }
+  
+  .admin-applications-page .app-stats-bar {
+    padding: 0 16px;
+  }
+  
+  .admin-applications-page .stat-item {
+    padding: 12px 16px;
+  }
+  
+  .admin-applications-page .stat-value {
+    font-size: 24px;
+  }
+  
+  .admin-applications-page .app-filters {
+    padding: 0 16px;
+  }
+  
+  .admin-applications-page .applications-table-container {
+    margin: 0 16px;
+  }
+  
+  .admin-applications-page .approve-action,
+  .admin-applications-page .reject-action {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}

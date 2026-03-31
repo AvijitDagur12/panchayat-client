@@ -1,0 +1,306 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bdo-login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Grid Layout - Split Screen */
+.bdo-login-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+}
+
+/* Left Brand Section */
+.bdo-brand-section {
+  background: #0a2b3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bdo-brand-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.bdo-brand-content {
+  max-width: 400px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.bdo-emblem {
+  margin-bottom: 32px;
+}
+
+.bdo-emblem svg {
+  stroke: #4a9eff;
+}
+
+.bdo-brand-content h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.bdo-brand-content p {
+  font-size: 16px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.bdo-divider {
+  width: 60px;
+  height: 3px;
+  background: #4a9eff;
+  margin: 24px 0;
+}
+
+.bdo-brand-content h2 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.bdo-tagline {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 12px;
+}
+
+/* Right Form Section */
+.bdo-form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 48px;
+}
+
+.bdo-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.bdo-form-wrapper h3 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.bdo-welcome {
+  color: #64748b;
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+/* Input Groups */
+.bdo-input-group {
+  margin-bottom: 24px;
+}
+
+.bdo-input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.bdo-input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  transition: all 0.2s;
+  font-family: inherit;
+  color: #0f172a;
+}
+
+.bdo-input-group input:focus {
+  outline: none;
+  border-color: #0a2b3e;
+}
+
+.bdo-input-group input::placeholder {
+  color: #94a3b8;
+}
+
+/* Button */
+.bdo-form-wrapper button {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0a2b3e;
+  color: white;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.bdo-form-wrapper button:hover:not(:disabled) {
+  background: #0f3b52;
+}
+
+.bdo-form-wrapper button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.bdo-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.bdo-error {
+  background: #fef2f2;
+  border-left: 3px solid #ef4444;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.bdo-error svg {
+  flex-shrink: 0;
+}
+
+/* Demo Credentials */
+.bdo-demo {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.bdo-demo span {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bdo-demo code {
+  font-size: 13px;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 6px 12px;
+  font-family: 'Monaco', monospace;
+}
+
+/* Footer */
+.bdo-footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.bdo-footer p {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bdo-login-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bdo-brand-section {
+    padding: 40px 24px;
+    min-height: 280px;
+  }
+
+  .bdo-brand-content {
+    text-align: center;
+  }
+
+  .bdo-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bdo-form-section {
+    padding: 40px 24px;
+  }
+
+  .bdo-form-wrapper h3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bdo-brand-section {
+    padding: 32px 20px;
+  }
+
+  .bdo-brand-content h1 {
+    font-size: 24px;
+  }
+
+  .bdo-brand-content p {
+    font-size: 14px;
+  }
+
+  .bdo-form-section {
+    padding: 32px 20px;
+  }
+
+  .bdo-form-wrapper h3 {
+    font-size: 24px;
+  }
+}
