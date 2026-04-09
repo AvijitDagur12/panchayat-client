@@ -117,7 +117,7 @@ const Dashboard = () => {
         <div className="nav-right">
           <div className="dash-user">
             {user.photo ? (
-              <img src={`http://localhost:5000/uploads/${user.photo}`} alt={user.name} className="dash-user-img" />
+              <img src={`https://panchayat-backend-new.onrender.com/uploads/${user.photo}`} alt={user.name} className="dash-user-img" />
             ) : (
               <div className="dash-user-img-placeholder">{user.name?.charAt(0).toUpperCase()}</div>
             )}

@@ -19,7 +19,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const res = await axios.post('https://mern-panchayet-server.onrender.com/api/admin/login', formData);
+      const res = await axios.post('https://panchayat-backend-new.onrender.com/api/admin/login', formData);
       if (res.data.success) {
         localStorage.setItem('admin', JSON.stringify(res.data.admin));
         navigate('/admin/dashboard');

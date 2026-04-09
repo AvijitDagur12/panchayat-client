@@ -47,7 +47,7 @@ const Contact = () => {
         formDataToSend.append('image', formData.image);
       }
 
-      const response = await axios.post('https://mern-panchayet-server.onrender.com/api/contact', 
+      const response = await axios.post('https://panchayat-backend-new.onrender.com/api/contact', 
         formDataToSend,
         {
           headers: {

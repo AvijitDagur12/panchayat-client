@@ -29,7 +29,7 @@ const Support = () => {
     const fetchComplaints = useCallback(async () => {
         try {
             setLoading(true);
-            const response = await axios.get('https://mern-panchayet-server.onrender.com/api/contacts');
+            const response = await axios.get('https://panchayat-backend-new.onrender.com/api/contacts');
             if (response.data.success) {
                 setComplaints(response.data.data);
                 calculateStats(response.data.data);
@@ -140,7 +140,7 @@ const Support = () => {
     // Get image URL
     const getImageUrl = (image) => {
         if (!image) return null;
-        const baseUrl = 'https://mern-panchayet-server.onrender.com';
+        const baseUrl = 'https://panchayat-backend-new.onrender.com';
         if (image.startsWith('http')) return image;
         if (image.startsWith('/uploads')) return `${baseUrl}${image}`;
         return `${baseUrl}/uploads/${image}`;

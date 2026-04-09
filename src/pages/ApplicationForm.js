@@ -332,7 +332,7 @@ const ApplicationForm = () => {
 
       data.append('userId', user._id.toString());
 
-      const res = await fetch('https://checkirpala.onrender.com/api/apply', {
+      const res = await fetch('https://panchayat-backend-new.onrender.com/api/apply', {
         method: 'POST',
         body: data
       });

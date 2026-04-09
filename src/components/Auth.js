@@ -36,7 +36,7 @@ const Auth = () => {
     try {
       if (isLogin) {
         // LOGIN
-        const res = await fetch("https://mern-panchayet-server.onrender.com/api/login", {
+        const res = await fetch("https://panchayat-backend-new.onrender.com/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

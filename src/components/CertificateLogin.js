@@ -48,7 +48,7 @@ const CertificateLogin = () => {
     setError('');
     
     try {
-      const response = await axios.get(`https://mern-panchayet-server.onrender.com/api/certificate/ticket/${ticketId}`);
+      const response = await axios.get(`https://panchayat-backend-new.onrender.com/api/certificate/ticket/${ticketId}`);
       
       if (response.data.success) {
         setUserData(response.data.data);
@@ -64,7 +64,7 @@ const CertificateLogin = () => {
   };
 
   const downloadCertificate = () => {
-    window.open(`https://mern-panchayet-server.onrender.com/api/download-certificate-pdf/${userData._id}`, '_blank');
+    window.open(`https://panchayat-backend-new.onrender.com/api/download-certificate-pdf/${userData._id}`, '_blank');
   };
 
   return (
