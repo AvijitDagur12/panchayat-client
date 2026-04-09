@@ -89,8 +89,7 @@ const AdminApplications = () => {
     <div className="image-modal" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <span className="close-modal" onClick={onClose}>&times;</span>
-        <img src={`http://localhost:5000/uploads/${image}`} alt="Document" />
-      </div>
+        <img src={`https://panchayat-backend-new.onrender.com/uploads/${image}`} alt="Document" />      </div>
     </div>
   );
 
@@ -198,7 +197,7 @@ const AdminApplications = () => {
                   <td className="photo-cell">
                     {app.photo ? (
                       <img 
-                        src={`http://localhost:5000/uploads/${app.photo}`} 
+                        src={`https://panchayat-backend-new.onrender.com/uploads/${app.photo}`} 
                         alt="Applicant"
                         className="applicant-thumb"
                         onClick={() => setSelectedImage(app.photo)}
