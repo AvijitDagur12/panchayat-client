@@ -54,7 +54,7 @@ const AdminLogin = () => {
         <div className="bdo-form-section">
           <div className="bdo-form-wrapper">
             <h3>Sign In</h3>
-            <p className="bdo-welcome">Welcome back, Administrator</p>
+            <p className="bdo-welcome">Welcome back, Administrator On Testing Mode</p>
 
             {error && (
               <div className="bdo-error">
@@ -75,7 +75,7 @@ const AdminLogin = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="admin@bdo.gov.in"
+                  placeholder="admin@panchayat.gov.in"
                   required
                 />
               </div>
@@ -87,7 +87,7 @@ const AdminLogin = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="Enter your password"
+                  placeholder="Enter your password- admin@123"
                   required
                 />
               </div>

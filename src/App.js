@@ -18,6 +18,8 @@ import CertificateApplication from './components/CertificateApplication';
 import CertificateLogin from './components/CertificateLogin';
 import AdminCertificatePanel from './components/AdminCertificatePanel';
 import PSC from './components/PSC';
+import UnderDev from './components/UnderDev';
+import PopupModal from './components/PopupModal';
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
                 <Services />
                 <Contact />
               </div>
+              <PopupModal />
             </>
           }
         />
@@ -66,8 +69,10 @@ function App() {
         <Route path="/download-certificate" element={<CertificateLogin />} />
         <Route path="/admin/certificates" element={<AdminCertificatePanel />} />
         <Route path="/psc" element={<PSC />} />
-        
-        
+        <Route path="/under-dev" element={<UnderDev />} />
+        <Route path="/contact" element={<Contact />} />
+
+
       </Routes>
     </Router>
   );

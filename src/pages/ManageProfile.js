@@ -53,7 +53,7 @@ const ManageProfile = () => {
 
   const fetchUserDocuments = async (userId) => {
     try {
-      const res = await fetch(`https://checkirpala.onrender.com/api/user-documents/${userId}`);
+      const res = await fetch(`https://panchayat-backend-new.onrender.com/api/user-documents/${userId}`);
       const data = await res.json();
       setDocuments(data);
     } catch (err) {
@@ -98,7 +98,7 @@ const ManageProfile = () => {
       if (formData.photo) data.append('photo', formData.photo);
       data.append('userId', user._id);
 
-      const res = await fetch('https://checkirpala.onrender.com/api/update-profile', {
+      const res = await fetch('https://panchayat-backend-new.onrender.com/api/update-profile', {
         method: 'PUT',
         body: data
       });
@@ -131,7 +131,7 @@ const ManageProfile = () => {
     setMessage('');
 
     try {
-      const res = await fetch('https://checkirpala.onrender.com/api/update-password', {
+      const res = await fetch('https://panchayat-backend-new.onrender.com/api/update-password', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -168,7 +168,7 @@ const ManageProfile = () => {
       data.append('file', newDoc.file);
       data.append('userId', user._id);
 
-      const res = await fetch('https://checkirpala.onrender.com/api/upload-document', {
+      const res = await fetch('https://panchayat-backend-new.onrender.com/api/upload-document', {
         method: 'POST',
         body: data
       });
@@ -193,7 +193,7 @@ const ManageProfile = () => {
     if (!window.confirm('Delete this document?')) return;
 
     try {
-      const res = await fetch(`https://checkirpala.onrender.com/api/delete-document/${docId}`, {
+      const res = await fetch(`https://panchayat-backend-new.onrender.com/api/delete-document/${docId}`, {
         method: 'DELETE'
       });
 
@@ -220,14 +220,14 @@ const ManageProfile = () => {
             <label>Profile Photo</label> 
             <input type="file" accept="image/*" onChange={handlePhotoChange} />
             {user.photo && !formData.photo && (
-              <img src={`https://checkirpala.onrender.com/uploads/${user.photo}`} alt="Profile" className="profile-preview" />
+              <img src={`https://panchayat-backend-new.onrender.com/uploads/${user.photo}`} alt="Profile" className="profile-preview" />
             )}
           </div>
         {/* Row 1: Name, Email, Phone */}
         <div className="form-row">
           <div className="form-group">
             <label>Name</label>
-            <input type="text" name="name" value={formData.name} readOnly className="readonly" />
+            <input type="text" name="name" value={formData.name} readOnly   className="readonly" />
             <small>Name cannot be changed</small>
           </div>
 
@@ -299,7 +299,7 @@ const ManageProfile = () => {
             <div key={doc._id} className="document-item">
               <span>{doc.name}</span>
               <div className="doc-actions">
-                <a href={`https://checkirpala.onrender.com/uploads/${doc.file}`} target="_blank" rel="noopener noreferrer">View</a>
+                <a href={`https://panchayat-backend-new.onrender.com/uploads/${doc.file}`} target="_blank" rel="noopener noreferrer">View</a>
                 <button onClick={() => deleteDocument(doc._id)}>Delete</button>
               </div>
             </div>

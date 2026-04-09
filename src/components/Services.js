@@ -6,17 +6,17 @@ const Services = () => {
   const servicesData = [
     {
       id: 1,
-      title: "সনদপত্র",
+      title: "সার্টিফিকেট",
       titleEn: "Certificates",
       icon: "📄",
       description: "জন্ম, মৃত্যু, জাতি, আবাস - সব সনদ অনলাইনে",
       images: [
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1554224154-26032dfc0d6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://static.vecteezy.com/system/resources/thumbnails/006/425/314/small/modern-university-certificate-template-free-vector.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4ZQwAglgpXjWnUk2X8-oIXXPmfdtf6Fhf1cAGeoywA&s",
+        "https://i.pinimg.com/236x/94/51/0a/94510ac1a3547b3c0bb022f1713ea724.jpg",
         "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1585435557343-3b092031a831?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1554224155-26032dfc0d6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        "https://static.vecteezy.com/system/resources/previews/070/078/118/non_2x/clean-modern-unique-latest-certificate-design-template-vector.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEcIjI-4xLFFycX-aYPUxsim7n0RfdqDiPw&s"
       ]
     },
     {
@@ -26,12 +26,12 @@ const Services = () => {
       icon: "💧",
       description: "নতুন সংযোগ, নলকূপ মেরামত, পানীয় জল",
       images: [
-        "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs7zwMro55lZ6Uq9nFeTx8PjMpHDMVal4U8A&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgAbkN5Xdbec7YEZ99N6HLL3xZygROt-yf_w&s",
         "https://images.unsplash.com/photo-1538300342682-cf57afb97285?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1578469645745-b3a33a6b81a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1518623380800-1bdd9b7021c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_G-LjG1ufYcnX3mMQV19nzntx5pivO1QgpA&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknOY_ZQoVjYXZph9mDOTZUeNZy6uhqH9Vtw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51DhgVbxc_h2vFNCCLjocXwgw7UdsMtYaTA&s"
       ]
     },
     {
@@ -41,12 +41,12 @@ const Services = () => {
       icon: "🛣️",
       description: "পাকা রাস্তা, ড্রেনেজ, মেরামতের কাজ",
       images: [
-        "https://images.unsplash.com/photo-1577717903315-1691ae25abf8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1597176116047-876a32798fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBYVJXlVvu-Z-k5dUEDgrX7t4ZpDBTrUFmlQ&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsW1fYcoS1GB1CMQjfmRqcR-SCoJAuuHmTAg&s",
         "https://images.unsplash.com/photo-1535382651921-5e77ea4458f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqFeL9B-g6guEdut4rF5OcSAnRUSD1OzPG-Q&s",
         "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47P3-ERWzEEfgqN-O1w3WxlCo15-Gd6JxiA&s"
       ]
     },
     {
@@ -56,12 +56,12 @@ const Services = () => {
       icon: "🌳",
       description: "চারা বিতরণ, সবুজায়ন, পরিবেশ সুরক্ষা",
       images: [
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1592150621744-32164f73334c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1592150621744-32164f73334c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZ4gYBNqaTm4nw0qiy6Ya0J3ij9It9pbFFQ&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKNOS1O5N_jd9fqNVPn1TVtoeJTvHCGxAKg&s",
+        "https://thumbs.dreamstime.com/b/guatemalan-father-son-planting-new-saplings-guatemala-department-alto-verapaz-san-cristobal-village-mountains-around-82576405.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-fzB6zzYPSEj3XldXPPvjuAmcnx-_hVebjw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzY4zpOrH-NKFYv5tLx4lcG3rA4r6-o9X38A&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkb6kwT8eZtPNpODDbrr_XZ-spMP3s3NZgQ&s"
       ]
     },
     {
@@ -71,12 +71,12 @@ const Services = () => {
       icon: "🌾",
       description: "বীজ, সার, ফসল সুরক্ষা, সেচ ব্যবস্থা",
       images: [
-        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1595278069441-2cf29faec5d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI63SHcHjezQtbCWyv4Cwq6WV0PW1YNAFW_Q&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEcop9yWKXShnf9WXg1BSCRf5EKQibAGtzUg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ8Y3_myF9IvtREV7UX5UBgIemj1s-qhDqvg&s",
         "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIK0JwslDfqaInVfQiiYuw7GIKXsj4uTkA3A&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEA3llDfUCUFXfdgp9I-9ulBxZwN6zEE9K-g&s"
       ]
     }
   ];
@@ -117,7 +117,7 @@ const Services = () => {
         ))}
 
         {/* Quick Service Cards */}
-        <div className="service-cards">
+        {/* <div className="service-cards">
           <div className="service-card-item">
             <span className="card-icon">📄</span>
             <h4>সনদপত্র</h4>
@@ -138,7 +138,7 @@ const Services = () => {
             <h4>জনসেবা</h4>
             <p>হেল্পডেস্ক, আবেদন স্ট্যাটাস, জনশুনানি।</p>
           </div>
-        </div>
+        </div> */}
 
         {/* Stats */}
         <div className="services-stats">

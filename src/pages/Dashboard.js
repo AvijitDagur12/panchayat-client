@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   const fetchApplications = async (userId) => {
     try {
-      const res = await fetch(`https://checkirpala.onrender.com/api/my-applications/${userId}`);
+      const res = await fetch(`https://panchayat-backend-new.onrender.com/api/my-applications/${userId}`);
       const data = await res.json();
       setApplications(data);
     } catch (err) {
@@ -34,7 +34,7 @@ const Dashboard = () => {
   // ===== PDF DOWNLOAD FUNCTION =====
   const handleDownload = async (applicationId) => {
     try {
-      const response = await fetch(`https://checkirpala.onrender.com/api/download-certificate/${applicationId}`);
+      const response = await fetch(`https://panchayat-backend-new.onrender.com/api/download-certificate/${applicationId}`);
 
       if (!response.ok) {
         const error = await response.json();
@@ -117,7 +117,7 @@ const Dashboard = () => {
         <div className="nav-right">
           <div className="dash-user">
             {user.photo ? (
-              <img src={`https://checkirpala.onrender.com/uploads/${user.photo}`} alt={user.name} className="dash-user-img" />
+              <img src={`http://localhost:5000/uploads/${user.photo}`} alt={user.name} className="dash-user-img" />
             ) : (
               <div className="dash-user-img-placeholder">{user.name?.charAt(0).toUpperCase()}</div>
             )}

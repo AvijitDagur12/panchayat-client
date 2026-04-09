@@ -1,4 +1,4 @@
-/* HeaderNav.css - Updated with better responsive and black border */
+/* HeaderNav.css - Mobile responsive only (like topbar) */
 
 /* Import Bengali font */
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
@@ -197,7 +197,7 @@ a {
   }
   
   .left p {
-    font-size: 24px;
+    font-size: 35px;
   }
   
   .center {
@@ -222,6 +222,7 @@ a {
     top: 50px;
     gap: 10px;
     background: white;
+   
   }
   
   .left {
@@ -238,7 +239,7 @@ a {
   }
   
   .left p {
-    font-size: 20px;
+    font-size: 34px;
     padding-left: 10px;
     border-left: 2px solid #138808;
     white-space: normal;
@@ -274,7 +275,7 @@ a {
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
-    border: 2px solid #000000; /* Black border */
+    border: 2px solid #000000;
     border-radius: 6px;
     padding: 5px 0;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -298,100 +299,81 @@ a {
   }
 }
 
-/* ========== MOBILE (480px) ========== */
+/* ========== MOBILE (480px) - LIKE TOPBAR STYLE ========== */
 @media (max-width: 480px) {
   .header-nav {
-    padding: 8px 10px;
-    top: 45px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  
+  .left {
+    gap: 8px;
+    padding: 3px 0;
   }
   
   .left .logo {
-    height: 35px;
-    border-width: 1.5px;
+    height: 32px;
+    padding: 2px;
   }
   
   .left p {
-    font-size: 16px;
-    padding-left: 8px;
-    border-left-width: 1.5px;
-    text-shadow: 0.5px 0.5px 0 #FFD700;
+    font-size: 25px;
+    padding-left: 6px;
   }
   
   .center {
-    gap: 5px;
-    padding: 8px 5px;
+    gap: 6px;
+    padding: 6px 8px;
   }
   
   .nav-item {
-    font-size: 12px;
-    padding: 5px 8px;
+    font-size: 15px;
+    padding: 4px 6px;
   }
   
   .nav-item::after {
-    font-size: 8px;
+    font-size: 7px;
     margin-left: 3px;
   }
   
   .dropdown {
-    width: 180px;
-    min-width: 150px;
+    width: 160px;
+    min-width: 140px;
   }
   
   .dropdown a {
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  
+  .right {
+    gap: 6px;
   }
   
   .login-btn {
-    padding: 8px 15px;
-    font-size: 14px;
-    border-width: 1.5px;
+    padding: 5px 12px;
+    font-size: 12px;
   }
 }
 
 /* ========== SMALL MOBILE (360px) ========== */
 @media (max-width: 360px) {
+  .header-nav {
+    padding: 6px 10px;
+     font-size: 16px;
+  }
+  
+  .left .logo {
+    height: 28px;
+  }
+  
   .left p {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .center {
-    flex-wrap: wrap;
-  }
-  
-  .nav-item {
-    font-size: 11px;
-    padding: 4px 6px;
-  }
-  
-  .nav-item::after {
-    display: inline-block; /* Keep arrow on small mobile */
-    font-size: 7px;
-  }
-  
-  .dropdown {
-    width: 150px;
-  }
-  
-  .dropdown a {
-    padding: 6px 8px;
-    font-size: 11px;
-  }
-  
-  .login-btn {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-}
-
-/* ========== EXTRA SMALL (320px) ========== */
-@media (max-width: 320px) {
-  .left .logo {
-    height: 30px;
-  }
-  
-  .left p {
-    font-size: 12px;
+    gap: 4px;
+    padding: 5px 6px;
   }
   
   .nav-item {
@@ -399,8 +381,39 @@ a {
     padding: 3px 5px;
   }
   
-  .nav-item::after {
-    font-size: 6px;
+  .dropdown {
+    width: 140px;
+  }
+  
+  .dropdown a {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+  
+  .login-btn {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ========== EXTRA SMALL (320px) ========== */
+@media (max-width: 320px) {
+  .left .logo {
+    height: 25px;
+  }
+  
+  .left p {
+    font-size: 11px;
+  }
+  
+  .nav-item {
+    font-size: 9px;
+    padding: 2px 4px;
+  }
+  
+  .login-btn {
+    font-size: 10px;
+    padding: 3px 8px;
   }
 }
 
@@ -466,13 +479,13 @@ a {
 .mobile-toggle-btn {
   display: none;
   background: #138808;
-  color: white;
+  color: rgb(255, 255, 255);
   border: 2px solid #000080;
   border-radius: 6px;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  padding: 5px 12px;
+  padding: 3px 8px;
   transition: all 0.3s;
   font-family: 'Hind Siliguri', sans-serif;
   margin-left: auto;
@@ -487,6 +500,7 @@ a {
 @media (max-width: 768px) {
   .mobile-toggle-btn {
     display: block;
+    margin-top: 5px;
   }
   
   .center.hidden,

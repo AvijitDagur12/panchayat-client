@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Topbar.css";
 
 const Topbar = () => {
+  const navigate = useNavigate();
+
+  const handleUnderDev = (pageName) => {
+    localStorage.setItem('devPage', pageName);
+    navigate('/under-dev');
+  };
+
   return (
     <div className="topbar">
       <div className="topbar-left">
@@ -10,10 +18,13 @@ const Topbar = () => {
             <span className="nav-icon">🏛️</span>
             BDO LOGIN
           </a>
-          <a href="/sdo" className="nav-link">
+          <button 
+            onClick={() => handleUnderDev('SDO Login')} 
+            className="nav-link"
+          >
             <span className="nav-icon">📋</span>
             SDO LOGIN
-          </a>
+          </button>
           <a href="/psc" className="nav-link">
             <span className="nav-icon">👥</span>
             PSC LOGIN
@@ -22,7 +33,7 @@ const Topbar = () => {
       </div>
       <div className="topbar-right">
         <span className="portal-text">
-          Panchayet Portal 2.0
+          Panchayet Portal 1.0
           <span>Website Under Development</span>
         </span>
       </div>

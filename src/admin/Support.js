@@ -54,7 +54,7 @@ const Support = () => {
     // Update complaint status
     const updateStatus = async (id, newStatus) => {
         try {
-            const response = await axios.put(`https://mern-panchayet-server.onrender.com/api/contact/${id}`, {
+            const response = await axios.put(`https://panchayat-backend-new.onrender.com/api/contact/${id}`, {
                 status: newStatus.toLowerCase()
             });
 

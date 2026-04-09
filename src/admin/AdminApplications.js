@@ -27,7 +27,7 @@ const AdminApplications = () => {
 
   const fetchApplications = async () => {
     try {
-      const res = await axios.get('https://mern-panchayet-server.onrender.com/api/admin/applications');
+      const res = await axios.get('https://panchayat-backend-new.onrender.com/api/admin/applications');
       setApplications(res.data);
       setFilteredApps(res.data);
     } catch (err) {
@@ -61,7 +61,7 @@ const AdminApplications = () => {
     if (!selectedApp) return;
     
     try {
-      await axios.put(`https://mern-panchayet-server.onrender.com/api/admin/application/${selectedApp._id}`, { 
+      await axios.put(`https://panchayat-backend-new.onrender.com/api/admin/application/${selectedApp._id}`, { 
         status: 'Approved' 
       });
       fetchApplications();
@@ -75,7 +75,7 @@ const AdminApplications = () => {
   const handleReject = async (id) => {
     if (window.confirm('Are you sure you want to reject this application?')) {
       try {
-        await axios.put(`https://mern-panchayet-server.onrender.com/api/admin/application/${id}`, { 
+        await axios.put(`https://panchayat-backend-new.onrender.com/api/admin/application/${id}`, { 
           status: 'Rejected' 
         });
         fetchApplications();
@@ -89,7 +89,7 @@ const AdminApplications = () => {
     <div className="image-modal" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <span className="close-modal" onClick={onClose}>&times;</span>
-        <img src={`https://mern-panchayet-server.onrender.com/uploads/${image}`} alt="Document" />
+        <img src={`http://localhost:5000/uploads/${image}`} alt="Document" />
       </div>
     </div>
   );
@@ -198,7 +198,7 @@ const AdminApplications = () => {
                   <td className="photo-cell">
                     {app.photo ? (
                       <img 
-                        src={`https://mern-panchayet-server.onrender.com/uploads/${app.photo}`} 
+                        src={`http://localhost:5000/uploads/${app.photo}`} 
                         alt="Applicant"
                         className="applicant-thumb"
                         onClick={() => setSelectedImage(app.photo)}

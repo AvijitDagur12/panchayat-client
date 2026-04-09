@@ -71,7 +71,7 @@ const Auth = () => {
         data.append("password", formData.password);
         if (formData.photo) data.append("photo", formData.photo);
 
-        const res = await fetch("https://mern-panchayet-server.onrender.com/api/register", {
+        const res = await fetch("https://panchayat-backend-new.onrender.com/api/register", {
           method: "POST",
           body: data,
         });
@@ -276,9 +276,9 @@ const Auth = () => {
       </div>
 
       {/* Footer */}
-      <div className="citizen-footer">
+      {/* <div className="citizen-footer">
         <p>© 2024 Gram Panchayat • Citizen Services Portal • All Rights Reserved</p>
-      </div>
+      </div> */}
 
       {/* Loading Overlay */}
       {loading && (

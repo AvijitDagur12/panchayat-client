@@ -6,9 +6,10 @@ import './Admin.css';
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [admin, setAdmin] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showDevelopmentPopup, setShowDevelopmentPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
   const [stats, setStats] = useState({
     totalEmployees: 0,
     totalApplications: 0,
@@ -31,7 +32,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const adminData = localStorage.getItem('admin');
     if (!adminData) {
-      navigate('/admin');
+      navigate('/admin/login');
     } else {
       setAdmin(JSON.parse(adminData));
       fetchDashboardData();
@@ -47,7 +48,6 @@ const AdminDashboard = () => {
       
       const apps = appRes.data || [];
       
-      // Simulate loading delay for better UX
       setTimeout(() => {
         setStats({
           totalEmployees: 8,
@@ -95,11 +95,20 @@ const AdminDashboard = () => {
 
   const handleConfirmLogout = () => {
     localStorage.removeItem('admin');
-    navigate('/admin');
+    localStorage.removeItem('session_active');
+    navigate('/admin/login');
   };
 
   const handleCancelLogout = () => {
     setShowLogoutModal(false);
+  };
+
+  const handleUnderDevelopment = (pageName) => {
+    setPopupMessage(`${pageName} page is under development. Coming soon! 🚀`);
+    setShowDevelopmentPopup(true);
+    setTimeout(() => {
+      setShowDevelopmentPopup(false);
+    }, 3000);
   };
 
   if (!admin) return null;
@@ -111,6 +120,20 @@ const AdminDashboard = () => {
         <div className="admin-loading-overlay">
           <div className="admin-loading-spinner"></div>
           <p>Loading Dashboard Data...</p>
+        </div>
+      )}
+
+      {/* Under Development Popup */}
+      {showDevelopmentPopup && (
+        <div className="dev-popup">
+          <div className="dev-popup-content">
+            <span className="dev-popup-icon">🔨</span>
+            <h3>Under Development</h3>
+            <p>{popupMessage}</p>
+            <div className="dev-progress-bar">
+              <div className="dev-progress-fill"></div>
+            </div>
+          </div>
         </div>
       )}
 
@@ -134,54 +157,9 @@ const AdminDashboard = () => {
         </div>
       )}
 
-      {/* Hamburger */}
-      <button className="admin-hamburger" onClick={() => setSidebarOpen(true)}>☰</button>
-
-      {/* Sidebar */}
-      <div className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <button className="close-sidebar" onClick={() => setSidebarOpen(false)}>×</button>
-        
-        <div className="admin-profile">
-          <div className="admin-avatar">
-            {admin.name?.charAt(0).toUpperCase()}
-          </div>
-          <h3>{admin.name}</h3>
-          <p>{admin.email}</p>
-          <p className="admin-role">BDO • Irhpala Panchayat</p>
-        </div>
-
-        <div className="admin-menu">
-          <button className="active" onClick={() => setSidebarOpen(false)}>
-            📊 Main Dashboard
-          </button>
-          <button onClick={() => { navigate('/admin/AdminApplications'); setSidebarOpen(false); }}>
-            📝 Application Approval
-          </button>
-          <button onClick={() => { navigate('/admin/employees'); setSidebarOpen(false); }}>
-            👥 Employee Details
-          </button>
-          <button onClick={() => { navigate('/admin/reports'); setSidebarOpen(false); }}>
-            📈 Panchayat Reports
-          </button>
-          <button onClick={() => { navigate('/admin/Support'); setSidebarOpen(false); }}>
-            💬 Citizen Support
-          </button>
-          <button onClick={() => { navigate('/admin/meetings'); setSidebarOpen(false); }}>
-            📅 Meeting Schedule
-          </button>
-          <button onClick={handleLogoutClick}>🚪 Logout</button>
-        </div>
-
-        <div className="sidebar-footer">
-          <p>Irhpala Panchayat Portal</p>
-          <p>© 2024 • BDO Office</p>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="admin-main">
-        {/* Header with Ashoka Emblem */}
-        <div className="admin-header">
+      {/* Fixed Header - Always Visible */}
+      <div className="admin-header-fixed">
+        <div className="admin-header-content">
           <div className="admin-header-left">
             <div className="admin-emblem">
               <img 
@@ -204,26 +182,65 @@ const AdminDashboard = () => {
             })}
           </div>
         </div>
+      </div>
 
+      {/* Fixed Sidebar - Always Visible */}
+      <div className="admin-sidebar-fixed">
+        <div className="admin-profile">
+          <div className="admin-avatar">
+            {admin.name?.charAt(0).toUpperCase()}
+          </div>
+          <h3>{admin.name}</h3>
+          <p>{admin.email}</p>
+          <p className="admin-role">BDO • Irhpala Panchayat</p>
+        </div>
+
+        <div className="admin-menu">
+          <button className="active" onClick={() => window.location.href = '/admin/dashboard'}>
+            📊 Main Dashboard
+          </button>
+          <button onClick={() => { navigate('/admin/AdminApplications'); }}>
+            📝 Application Approval
+          </button>
+          <button onClick={() => handleUnderDevelopment('Employee Management')}>
+            👥 Manage Employees
+          </button>
+          <button onClick={() => handleUnderDevelopment('Panchayat Reports')}>
+            📈 Panchayat Reports
+          </button>
+          <button onClick={() => { navigate('/admin/Support'); }}>
+            💬 Citizen Support
+          </button>
+          <button onClick={() => handleUnderDevelopment('Meeting Schedule')}>
+            📅 Meeting Schedule
+          </button>
+          <button onClick={handleLogoutClick}>🚪 Logout</button>
+        </div>
+
+        <div className="sidebar-footer">
+          <p>Irhpala Panchayat Portal</p>
+          <p>© 2024 • BDO Office</p>
+        </div>
+      </div>
+
+      {/* Main Content with margins for fixed header and sidebar */}
+      <div className="admin-main-fixed">
         {/* Stats Cards - 4 Items */}
         <div className="stats-grid">
           <div className="stat-card primary">
             <span className="stat-icon">👥</span>
             <span className="stat-num">{stats.totalEmployees}</span>
             <span>Total Employees</span>
-            {/* <small>Panchayat Staff</small> */}
           </div>
           <div className="stat-card success">
             <span className="stat-icon">📝</span>
             <span className="stat-num">{stats.totalApplications}</span>
             <span>Total Applications</span>
-            {/* <small>All Time Applications</small> */}
           </div>
           <div className="stat-card warning">
             <span className="stat-icon">🌟</span>
             <span className="stat-num">{stats.totalPopularity.toLocaleString()}</span>
             <span>Total Popularity</span>
-            {/* <small>Village Citizens Served</small> */}
           </div>
           <div className="stat-card info">
             <span className="stat-icon">📊</span>
@@ -334,13 +351,13 @@ const AdminDashboard = () => {
             <button onClick={() => navigate('/admin/AdminApplications')}>
               📝 Review Applications
             </button>
-            <button onClick={() => navigate('/admin/employees')}>
+            <button onClick={() => handleUnderDevelopment('Employee Management')}>
               👥 Manage Employees
             </button>
-            <button onClick={() => navigate('/admin/meetings')}>
+            <button onClick={() => handleUnderDevelopment('Meeting Schedule')}>
               📅 Schedule Meeting
             </button>
-            <button onClick={() => navigate('/admin/reports')}>
+            <button onClick={() => handleUnderDevelopment('Generate Report')}>
               📊 Generate Report
             </button>
           </div>

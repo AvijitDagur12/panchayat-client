@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.under-dev-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Courier New', 'Fira Code', monospace;
+}
+
+.terminal-wrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Status Badges */
+.status-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.badge.red {
+  border-color: #ff4444;
+  color: #ff4444;
+}
+
+.badge.green {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.badge.yellow {
+  border-color: #ffaa00;
+  color: #ffaa00;
+}
+
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.red-led {
+  background: #ff4444;
+  box-shadow: 0 0 5px #ff4444;
+}
+
+.green-led {
+  background: #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+.yellow-led {
+  background: #ffaa00;
+  box-shadow: 0 0 5px #ffaa00;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Terminal Card */
+.terminal-card {
+  background: #0a0a0f;
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+}
+
+/* Terminal Header */
+.terminal-header {
+  background: #1a1a2e;
+  padding: 12px 20px;
+  border-bottom: 1px solid #00ff00;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-btn.red { background: #ff4444; }
+.terminal-btn.yellow { background: #ffaa00; }
+.terminal-btn.green { background: #00ff00; }
+
+.terminal-title {
+  color: #00ff00;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+/* Terminal Body */
+.terminal-body {
+  padding: 30px 25px;
+  background: #0a0a0f;
+  min-height: 350px;
+}
+
+.terminal-line {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: #00ff00;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.command {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.terminal-output {
+  margin-left: 20px;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: rgba(0, 255, 0, 0.03);
+  border-left: 2px solid #00ff00;
+}
+
+.output-text {
+  display: block;
+  color: #ffffff;
+  font-size: 13px;
+  margin-bottom: 8px;
+  font-family: monospace;
+}
+
+.output-text.warning {
+  color: #ffaa00;
+}
+
+.output-text.progress {
+  color: #00ff00;
+  letter-spacing: 1px;
+}
+
+/* Cursor Line */
+.cursor-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.blinking-cursor {
+  color: #00ff00;
+  font-size: 16px;
+  font-weight: bold;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px 25px;
+  border-top: 1px solid #00ff00;
+  background: #1a1a2e;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #00ff00;
+  color: #0a0a0f;
+}
+
+.btn-primary:hover {
+  background: #00cc00;
+  transform: scale(1.02);
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+}
+
+.btn-secondary:hover {
+  background: #00ff00;
+  color: #0a0a0f;
+  transform: scale(1.02);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  font-family: monospace;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .terminal-body {
+    padding: 20px 15px;
+  }
+  
+  .command {
+    font-size: 11px;
+  }
+  
+  .output-text {
+    font-size: 10px;
+  }
+  
+  .badge {
+    padding: 5px 12px;
+    font-size: 9px;
+  }
+  
+  .led {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 8px 20px;
+    font-size: 11px;
+  }
+  
+  .terminal-title {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-badges {
+    gap: 8px;
+  }
+  
+  .badge {
+    padding: 4px 10px;
+    font-size: 8px;
+  }
+  
+  .terminal-line {
+    gap: 5px;
+  }
+  
+  .prompt {
+    font-size: 11px;
+  }
+  
+  .command {
+    font-size: 10px;
+  }
+  
+  .terminal-output {
+    margin-left: 10px;
+    padding: 10px;
+  }
+  
+  .output-text {
+    font-size: 9px;
+  }
+  
+  .action-buttons {
+    gap: 10px;
+    padding: 15px;
+  }
+}

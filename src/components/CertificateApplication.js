@@ -94,7 +94,7 @@ const CertificateApplication = () => {
     setLoading(true);
     
     try {
-      const response = await axios.post('http://localhost:5000/api/certificate', formData);
+      const response = await axios.post('https://panchayat-backend-new.onrender.com/api/certificate', formData);
       
       if (response.data.success) {
         setCertificateId(response.data.data.ticketId);

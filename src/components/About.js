@@ -1,326 +1,195 @@
 import React from "react";
 import "./About.css";
 
-// Sample image imports - replace with your actual images
 import PradhanImg from "../assets/prodhan.jpg";
 import UpPradhanImg from "../assets/upo.avif";
 
 const About = () => {
-  // Sample panchayat data with village details
-  const panchayatDetails = {
-    name: "IRHPALA",
+  const panchayat = {
+    name: "ইরপালা গ্রাম পঞ্চায়েত",
     block: "Ghatal",
     district: "Paschim Medinipur",
+    state: "West Bengal",
     established: "1952",
-    totalVoters: "3,850",
-    maleVoters: "1,980",
-    femaleVoters: "1,870",
-    population: "8,240",
-    families: "1,620",
-    // Education Details
-    primarySchools: "6",
-    upperPrimary: "3",
-    highSchools: "2",
-    intermediate: "1",
-    totalStudents: "1,240",
-    // Health
-    primaryHealthCenter: "1",
-    subCenter: "2",
-    anganwadi: "4",
-    // Infrastructure
-    panchayatBhavan: "Yes",
-    internetFacility: "Yes",
-    solarLights: "45",
-    puccaRoad: "15 km"
+    office: "Irhpala Gram Panchayat Office",
+    population: "8,240+",
+    households: "1,620+",
+    villagesCovered: "12",
+    pinCode: "721212",
+    email: "irhpala.gp@wb.gov.in",
+    website: "www.irhpalagp.in",
   };
 
-  // Leadership data
-  const leadership = [
-    {
-      name: "Uttam Shat",
-      role: "Pradhan",
-      mobile: "9876543210",
-      image: PradhanImg,
-      since: "2025",
-      Village: "JADUPUR",
-      // occupation: "Farmer & Social Worker"
-    },
-    {
-      name: "Basanti Porey",
-      role: "Up Pradhan",
-      mobile: "8765432109",
-      image: UpPradhanImg,
-      since: "2025",
-      Village: "JOYKUNDU",
-      // occupation: "Self Help Group Leader"
-    }
+  const statsData = [
+    { value: panchayat.established, label: "Year Est.", icon: "🏛️" },
+    { value: panchayat.population, label: "Population", icon: "👥" },
+    { value: panchayat.households, label: "Households", icon: "🏠" },
+    { value: panchayat.villagesCovered, label: "Villages", icon: "🌾" },
   ];
 
-  // Village highlights
-  const highlights = [
-    "100% Households with Toilet",
-    "Har Ghar Jal Yojana Covered",
-    "Open Defecation Free",
-    "Fully Electrified",
-    "Gramin Bank Branch Available",
-    "Weekly Market Every Tuesday"
+  const leaders = [
+    {
+      name: "Mr. US",
+      role: "Pradhan",
+      village: "Jadupur",
+      tenure: "2025 - Present",
+      phone: "9876543210",
+      image: PradhanImg,
+      idNumber: "GP/JDP/001",
+      ward: "Ward No. 05",
+    },
+    {
+      name: "Mrs. BP",
+      role: "Upa Pradhan",
+      village: "Joykundu",
+      tenure: "2025 - Present",
+      phone: "8765432109",
+      image: UpPradhanImg,
+      idNumber: "GP/JKD/002",
+      ward: "Ward No. 08",
+    },
+  ];
+
+  const services = [
+    { icon: "📄", name: "Certificates", desc: "Income, Caste, Domicile", color: "#3b82f6" },
+    { icon: "🏗️", name: "Development", desc: "Infrastructure & Planning", color: "#f97316" },
+    { icon: "💧", name: "Utilities", desc: "Water, Sanitation, Roads", color: "#10b981" },
+    { icon: "📢", name: "Grievances", desc: "Public Issue Redressal", color: "#8b5cf6" },
+  ];
+
+  const infoBoxes = [
+    { icon: "👨🏻‍💻", title: "Meet Developer", line1: "Name : Avijit Dagur", line2: "Kismot,Ghatal,Paschim Medinipur, [avijitdagur80@gmail.com]" },
+    { icon: "🏢", title: "Profession", line1: "B.Tech Computer Science & Engineering Student (3rd Year)", line2: "Swami Vivekananda University, Kolkata" },
   ];
 
   return (
-    
-    <div className="about-section" id="about">
-      <div className="container">
+    <section className="ab-psection">
+      <div className="ab-container">
         
-        <h2>
-  <span className="heading-icon">🏛️</span>
-  About Us
-  <span className="heading-icon">🌾</span>
-</h2>
-
-
-        {/* Header with Village Info */}
-        <div className="village-header">
-          
-  {/* Top Section with Badge and Stats */}
-  <div className="header-top-section">
-    <div className="header-left">
-      <div className="gram-panchayat-badge">
-        <span className="badge-icon">🌿</span>
-        Gram Panchayat
-      </div>
-      <h1 className="village-name">
-        {panchayatDetails.name}
-        <span className="village-location">
-          {panchayatDetails.block}, {panchayatDetails.district}
-        </span>
-      </h1>
-    </div>
-    
-    <div className="header-stats">
-      <div className="stat-block">
-        <span className="stat-number">{panchayatDetails.established}</span>
-        <span className="stat-label">Established</span>
-      </div>
-      <div className="stat-block">
-        <span className="stat-number">72</span>
-        <span className="stat-label">Years</span>
-      </div>
-    </div>
-  </div>
-
-  {/* Middle Script - About Panchayat */}
-  <div className="village-script">
-    <p className="script-text">
-      "Our panchayat is the heartbeat of rural development, where tradition meets progress. 
-      With 8,240 proud villagers, we work together for education, health, and prosperity. 
-      From green fields to digital dreams, we're building a better tomorrow."
-    </p>
-    <div className="script-decoration">
-      <span className="leaf">🌿</span>
-      <span className="leaf">🌾</span>
-      <span className="leaf">🌿</span>
-    </div>
-  </div>
-
-  {/* Natural Village Background Elements */}
-  <div className="village-bg-elements">
-    <div className="bg-leaf leaf-1">🌿</div>
-    <div className="bg-leaf leaf-2">🌾</div>
-    <div className="bg-leaf leaf-3">🍃</div>
-    <div className="bg-leaf leaf-4">🌱</div>
-    <div className="bg-pattern"></div>
-  </div>
-</div>
-
-        {/* Main Stats Cards - Quick Info */}
-        <div className="quick-stats">
-          <div className="quick-stat-card">
-            <span className="stat-icon">👥</span>
-            <div>
-              <span className="stat-label">Total Voters</span>
-              <span className="stat-number">{panchayatDetails.totalVoters}</span>
-              <small>{panchayatDetails.maleVoters} Male · {panchayatDetails.femaleVoters} Female</small>
-            </div>
+        {/* HERO CARD */}
+        <div className="ab-hero-card">
+          <div className="ab-hero-badges">
+            <span className="ab-badge1">🏛️ Gram Panchayat</span>
+            <span className="ab-badge2">🇮🇳 Since 1952</span>
           </div>
-          <div className="quick-stat-card">
-            <span className="stat-icon">🏘️</span>
-            <div>
-              <span className="stat-label">Total Families</span>
-              <span className="stat-number">{panchayatDetails.families}</span>
-              <small>{panchayatDetails.population} Total Population</small>
-            </div>
-          </div>
-        </div>
-
-        {/* Panchayat Image with Details */}
-        <div className="featured-section">
-          <div className="featured-image">
-            <img 
-              src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepWMxzHI5VGjfseQ2KIKg_zkAmZcPNSSq0dnQn3yauGAO4skC6OXmx-FO7EVMNFIEvWLVbyAcxYdRvcBcxbvyDz63sp6xSahvb90myQN-gvzzMv0XLi8jhPnIinGpvq52wO0KVF=s1360-w1360-h1020-rw" 
-              alt="Panchayat Bhavan"
-            />
-            <div className="image-caption">
-              <span>🏛️ New Panchayat Bhavan</span>
-            </div>
-          </div>
-
-          <div className="featured-stats">
-            <h3>📊 Panchayat at a Glance</h3>
-            <div className="stat-rows">
-              <div className="stat-row">
-                <span>Panchayat Bhavan</span>
-                <span className="stat-value">{panchayatDetails.panchayatBhavan}</span>
-              </div>
-              <div className="stat-row">
-                <span>Internet Facility</span>
-                <span className="stat-value">{panchayatDetails.internetFacility}</span>
-              </div>
-              <div className="stat-row">
-                <span>Solar Lights</span>
-                <span className="stat-value">{panchayatDetails.solarLights}</span>
-              </div>
-              <div className="stat-row">
-                <span>Pucca Road</span>
-                <span className="stat-value">{panchayatDetails.puccaRoad}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Education Section - Mobile: 2 boxes in row */}
-        <div className="education-section">
-          <h3>🎓 Education Facilities</h3>
-          <div className="education-grid">
-            <div className="edu-card">
-              <span className="edu-icon">🏫</span>
-              <div className="edu-details">
-                <h4>Primary Schools</h4>
-                <p className="edu-count">{panchayatDetails.primarySchools}</p>
-                <small>Class 1-5</small>
-              </div>
-            </div>
-            <div className="edu-card">
-              <span className="edu-icon">📚</span>
-              <div className="edu-details">
-                <h4>Upper Primary</h4>
-                <p className="edu-count">{panchayatDetails.upperPrimary}</p>
-                <small>Class 6-8</small>
-              </div>
-            </div>
-            <div className="edu-card">
-              <span className="edu-icon">🏛️</span>
-              <div className="edu-details">
-                <h4>High Schools</h4>
-                <p className="edu-count">{panchayatDetails.highSchools}</p>
-                <small>Class 9-10</small>
-              </div>
-            </div>
-            <div className="edu-card">
-              <span className="edu-icon">🎯</span>
-              <div className="edu-details">
-                <h4>Intermediate</h4>
-                <p className="edu-count">{panchayatDetails.intermediate}</p>
-                <small>Class 11-12</small>
-              </div>
-            </div>
-            <div className="edu-card total-students">
-              <span className="edu-icon">👧🧑</span>
-              <div className="edu-details">
-                <h4>Total Students</h4>
-                <p className="edu-count">{panchayatDetails.totalStudents}</p>
-                <small>Across All Schools</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Health & Anganwadi */}
-        <div className="health-section">
-          <h3>🏥 Health Facilities</h3>
-          <div className="health-grid">
-            <div className="health-card">
-              <span>🏥 Primary Health Center</span>
-              <strong>{panchayatDetails.primaryHealthCenter}</strong>
-            </div>
-            <div className="health-card">
-              <span>🩺 Sub Health Center</span>
-              <strong>{panchayatDetails.subCenter}</strong>
-            </div>
-            <div className="health-card">
-              <span>👶 Anganwadi Centers</span>
-              <strong>{panchayatDetails.anganwadi}</strong>
-            </div>
-          </div>
-        </div>
-{/* leadership section */}
-       
-        <div className="leadership-section">
-          <h3>🌟 Our Leadership</h3>
-          <div className="leadership-grid">
-          {leadership.map((leader, index) => (
-  <div key={index} className="leader-card">
-    <span className="role-tag">{leader.role}</span>
-    <div className="leader-img">
-      <img src={leader.image} alt={leader.name} />
-    </div>
-    <div className="leader-info">
-      <h4>{leader.name}</h4>
-      <div className="leader-designation">{leader.role}</div>
-      
-      <div className="leader-details">
-        <div className="detail-row">
-          <span className="detail-icon">📍</span>
-          <span className="detail-label">Village</span>
-          <span className="detail-value">{leader.Village}</span>
-        </div>
-        <div className="detail-row">
-          <span className="detail-icon">📅</span>
-          <span className="detail-label">Since</span>
-          <span className="detail-value">{leader.since}</span>
-        </div>
-        <div className="detail-row">
-          <span className="detail-icon">🆔</span>
-          <span className="detail-label">ID No.</span>
-          <span className="detail-value">GP/{leader.Village.substring(0,3)}/{leader.since}</span>
-        </div>
-      </div>
-      
-      <a href={`tel:${leader.mobile}`} className="call-btn">
-        📞 {leader.mobile}
-      </a>
-      
-      <div className="card-footer">
-        <span className="card-id">Gram Panchayat {panchayatDetails.name}</span>
-        <span className="validity">Valid: 2025-2030</span>
-      </div>
-    </div>
-  </div>
-))}
-          </div>
-</div>
-
-        {/* Village Highlights */}
-        <div className="highlights-section">
-          <h3>✨ Village Highlights</h3>
-          <div className="highlights-grid">
-            {highlights.map((item, index) => (
-              <div key={index} className="highlight-item">
-                <span className="check-icon">✅</span>
-                <span>{item}</span>
+          <h1 className="ab-hero-title">{panchayat.name}</h1>
+          <p className="ab-hero-text">
+            Empowering rural communities through transparent governance, digital services, 
+            and sustainable development in <strong>Ghatal, Paschim Medinipur</strong>
+          </p>
+          <div className="ab-hero-stats">
+            {statsData.map((stat, idx) => (
+              <div key={idx} className="ab-hero-stat">
+                <span>{stat.icon}</span>
+                <div>
+                  <strong>{stat.value}</strong>
+                  <small>{stat.label}</small>
+                </div>
               </div>
             ))}
           </div>
+          <div className="ab-quote">
+            <p>“ Seva, Sushasan, Vikas — Service, Governance, Development ”</p>
+            <span>🇮🇳 Panchayati Raj System</span>
+          </div>
         </div>
 
-        {/* Digital Message */}
-        <div className="digital-message">
-          <p>
-            <span className="emoji">📱</span> 
-            Connect with Digital Panchayat Portal & Get Government Services from Home
-          </p>
+        {/* INFO BOXES GRID - 3 IN ROW ON DESKTOP, 2 ON TABLET, 1 ON MOBILE */}
+        <div className="ab-info-grid">
+          {infoBoxes.map((box, idx) => (
+            <div key={idx} className="ab-info-card">
+              <div className="ab-info-icon">{box.icon}</div>
+              <h3>{box.title}</h3>
+              <p>{box.line1}</p>
+              <small>{box.line2}</small>
+            </div>
+          ))}
+        </div>
+
+        {/* ABOUT + SERVICES SECTION */}
+        <div className="ab-two-col">
+          <div className="ab-about-box">
+            <div className="ab-box-header">
+              <span>📖</span>
+              <h2>About Our Panchayat</h2>
+            </div>
+            <div className="ab-about-body">
+              <p className="ab-lead">
+                {panchayat.name} stands as a beacon of grassroots democracy, serving the vibrant communities of Ghatal region.
+              </p>
+              <p>
+                Established in <strong>1952</strong>, our panchayat has been instrumental in driving rural transformation, 
+                empowering local communities, and ensuring that development reaches every doorstep.
+              </p>
+              <div className="ab-features">
+                <div><span>✅</span> 12 villages under jurisdiction</div>
+                <div><span>✅</span> 100% digital service delivery</div>
+                <div><span>✅</span> Transparent grievance system</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="ab-services-box">
+            <div className="ab-box-header">
+              <span>⚙️</span>
+              <h2>Key Services</h2>
+            </div>
+            <div className="ab-services-grid">
+              {services.map((service, idx) => (
+                <div key={idx} className="ab-service-card" style={{ background: `linear-gradient(135deg, ${service.color}, ${service.color}dd)` }}>
+                  <div className="ab-service-icon">{service.icon}</div>
+                  <h4>{service.name}</h4>
+                  <p>{service.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* LEADERS + MISSION/VISION IN SAME ROW */}
+        <div className="ab-bottom-row">
+          {/* LEFT SIDE - Leaders (Pradhan & Upa Pradhan) */}
+          <div className="ab-leaders-container">
+            {leaders.map((leader, idx) => (
+              <div key={idx} className="ab-leader-simple-card">
+                <div className="ab-leader-image">
+                  <img src={leader.image} alt={leader.name} />
+                  <div className={`ab-leader-role-badge ${leader.role === 'Pradhan' ? 'pradhan-badge' : 'upapradhan-badge'}`}>
+                    {leader.role}
+                  </div>
+                </div>
+                <div className="ab-leader-details-simple">
+                  <h3>{leader.name}</h3>
+                  <p className="ab-leader-location">📍 {leader.village}</p>
+                  <div className="ab-leader-meta">
+                    <span>🆔 {leader.idNumber}</span>
+                    <span>🗳️ {leader.ward}</span>
+                    <span>📅 {leader.tenure}</span>
+                  </div>
+                  <a href={`tel:${leader.phone}`} className="ab-leader-call">
+                    📞 Call {leader.role}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT SIDE - Mission & Vision */}
+          <div className="ab-mv-container">
+            <div className="ab-mv-simple-card">
+              <div className="ab-mv-icon">🎯</div>
+              <h3>Our Vision</h3>
+              <p>একটা AI-ভিত্তিক আদর্শ গ্রাম পঞ্চায়েত গড়ে তোলা, যেখানে প্রতিটি নাগরিক ভালো সেবা, স্বচ্ছ প্রশাসন এবং টেকসই উন্নয়নের সুযোগ পাবে।</p>
+            </div>
+            <div className="ab-mv-simple-card">
+              <div className="ab-mv-icon">🚀</div>
+              <h3>Our Mission</h3>
+              <p>AI ব্যবহার করে নাগরিক-কেন্দ্রিক সেবা প্রদান, জনগণের অংশগ্রহণে পরিকল্পনা করা এবং সবার জন্য সমান উন্নয়ন নিশ্চিত করা।</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './AdminCertificatePanel.css';
 
@@ -8,30 +8,33 @@ const AdminCertificatePanel = () => {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [applications, setApplications] = useState([]);
+  const [filteredApplications, setFilteredApplications] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
   const [stats, setStats] = useState({ pending: 0, approved: 0, rejected: 0, total: 0 });
   const [selectedApp, setSelectedApp] = useState(null);
   const [remarks, setRemarks] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState('All');
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   // Demo admin credentials
-  const ADMIN_USERNAME = 'NABIN KHAN';
-  const ADMIN_PASSWORD = 'nabin123';
+  const ADMIN_USERNAME = 'user@irhpala.in';
+  const ADMIN_PASSWORD = 'irhpala@2026';
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-      setIsLoggedIn(true);
-      setLoginError('');
-      fetchApplications();
-    } else {
-      setLoginError('Invalid credentials! Use: NABIN KHAN / nabin123');
-    }
-  };
+  const calculateStats = useCallback((data) => {
+    setStats({
+      total: data.length,
+      pending: data.filter(app => app.status === 'Pending').length,
+      approved: data.filter(app => app.status === 'Approved').length,
+      rejected: data.filter(app => app.status === 'Rejected').length
+    });
+  }, []);
 
-  const fetchApplications = async () => {
+  const fetchApplications = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/certificates');
+      const response = await axios.get('https://panchayat-backend-new.onrender.com/api/certificates');
       if (response.data.success) {
         setApplications(response.data.data);
         calculateStats(response.data.data);
@@ -41,23 +44,79 @@ const AdminCertificatePanel = () => {
     } finally {
       setLoading(false);
     }
+  }, [calculateStats]);
+
+  const filterApplications = useCallback(() => {
+    let filtered = [...applications];
+    
+    if (searchTerm) {
+      filtered = filtered.filter(app => 
+        app.applicantName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        app.fatherName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        app.village.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (app.ticketId && app.ticketId.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    }
+    
+    if (filterStatus !== 'All') {
+      filtered = filtered.filter(app => app.status === filterStatus);
+    }
+    
+    setFilteredApplications(filtered);
+  }, [applications, searchTerm, filterStatus]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchApplications();
+    }
+  }, [isLoggedIn, fetchApplications]);
+
+  useEffect(() => {
+    filterApplications();
+  }, [filterApplications]);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginLoading(true);
+    
+    // Simulate login delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+      setIsLoggedIn(true);
+      setLoginError('');
+      // Clear form fields after successful login
+      setUsername('');
+      setPassword('');
+    } else {
+      setLoginError('Invalid credentials! Use: user@irhpala.in / irhpala@2026');
+    }
+    setLoginLoading(false);
   };
 
-  const calculateStats = (data) => {
-    setStats({
-      total: data.length,
-      pending: data.filter(app => app.status === 'Pending').length,
-      approved: data.filter(app => app.status === 'Approved').length,
-      rejected: data.filter(app => app.status === 'Rejected').length
-    });
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setShowLogoutModal(false);
+    setIsLoggedIn(false);
+    setApplications([]);
+    setFilteredApplications([]);
+    setSearchTerm('');
+    setFilterStatus('All');
+  };
+
+  const handleCancelLogout = () => {
+    setShowLogoutModal(false);
   };
 
   const updateStatus = async (id, status) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/certificate/${id}`, {
+      const response = await axios.put(`https://panchayat-backend-new.onrender.com/api/certificate/${id}`, {
         status,
         remarks,
-        approvedBy: 'NABIN KHAN',
+        approvedBy: 'user@irhpala.in',
         approvedDate: new Date()
       });
       
@@ -117,14 +176,20 @@ const AdminCertificatePanel = () => {
 
             {loginError && <div className="cert-error-msg">{loginError}</div>}
 
-            <button type="submit" className="cert-login-btn">
-              Login to Dashboard →
+            <button type="submit" className="cert-login-btn" disabled={loginLoading}>
+              {loginLoading ? (
+                <>
+                  <span className="cert-spinner"></span> Logging in...
+                </>
+              ) : (
+                'Login to Dashboard →'
+              )}
             </button>
 
             <div className="cert-demo-info">
               <p>🔐 Demo Credentials:</p>
-              <p><strong>Username:</strong> NABIN KHAN</p>
-              <p><strong>Password:</strong> nabin123</p>
+              <p><strong>Username:</strong> user@irhpala.in</p>
+              <p><strong>Password:</strong> irhpala@2026</p>
             </div>
           </form>
         </div>
@@ -134,13 +199,33 @@ const AdminCertificatePanel = () => {
 
   return (
     <div className="cert-admin-dashboard">
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+        <div className="cert-modal-overlay">
+          <div className="cert-logout-modal">
+            <div className="cert-logout-modal-header">
+              <span className="cert-logout-icon">🚪</span>
+              <h3>Confirm Logout</h3>
+            </div>
+            <div className="cert-logout-modal-body">
+              <p>Are you sure you want to logout?</p>
+              <p className="cert-logout-warning">You will need to login again to access the dashboard.</p>
+            </div>
+            <div className="cert-logout-modal-footer">
+              <button className="cert-logout-cancel" onClick={handleCancelLogout}>Cancel</button>
+              <button className="cert-logout-confirm" onClick={handleConfirmLogout}>Yes, Logout</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="cert-dashboard-header">
         <h1>
-          <i className="fas fa-tasks"></i> Certificate Management Dashboard
+          🏛️ Panchayat Certificate Management Dashboard
         </h1>
         <div className="cert-admin-info">
           <span>👤 {ADMIN_USERNAME}</span>
-          <button className="cert-logout-btn" onClick={() => setIsLoggedIn(false)}>Logout</button>
+          <button className="cert-logout-btn" onClick={handleLogoutClick}>Logout</button>
         </div>
       </div>
 
@@ -164,19 +249,47 @@ const AdminCertificatePanel = () => {
         </div>
       </div>
 
-      {/* Applications Table */}
+      {/* Applications Table - Fixed No Scroll */}
       <div className="cert-applications-table-container">
         <div className="cert-table-header">
-          <h3>📋 Certificate Applications</h3>
+          <h3>📋 Applications</h3>
           <button className="cert-refresh-btn" onClick={fetchApplications}>
             🔄 Refresh
           </button>
         </div>
 
+        {/* Search and Filter Bar */}
+        <div className="cert-search-filter-bar">
+          <div className="cert-search-box">
+            <input
+              type="text"
+              placeholder="🔍 Search by name, father's name, village or ticket ID..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="cert-search-input"
+            />
+          </div>
+          <div className="cert-filter-box">
+            <select 
+              value={filterStatus} 
+              onChange={(e) => setFilterStatus(e.target.value)}
+              className="cert-filter-select"
+            >
+              <option value="All">All Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+        </div>
+
         {loading ? (
-          <div className="cert-loading">Loading applications...</div>
+          <div className="cert-loading">
+            <div className="cert-loading-spinner"></div>
+            <p>Loading applications...</p>
+          </div>
         ) : (
-          <div className="cert-table-responsive">
+          <div className="cert-table-fixed">
             <table className="cert-applications-table">
               <thead>
                 <tr>
@@ -191,31 +304,37 @@ const AdminCertificatePanel = () => {
                 </tr>
               </thead>
               <tbody>
-                {applications.map(app => (
-                  <tr key={app._id}>
-                    <td className="cert-ticket-id-cell">
-                      {app.ticketId || `TKT-${app._id.slice(-6).toUpperCase()}`}
-                    </td>
-                    <td>{app.applicantName}</td>
-                    <td>{app.fatherName}</td>
-                    <td>{app.village}</td>
-                    <td>₹ {app.monthlyIncome}</td>
-                    <td>{new Date(app.submittedAt).toLocaleDateString()}</td>
-                    <td>
-                      <span className={getStatusBadge(app.status)}>
-                        {app.status || 'Pending'}
-                      </span>
-                    </td>
-                    <td>
-                      <button 
-                        className="cert-view-btn"
-                        onClick={() => setSelectedApp(app)}
-                      >
-                        Review
-                      </button>
-                    </td>
+                {filteredApplications.length === 0 ? (
+                  <tr>
+                    <td colSpan="8" className="cert-no-data">No applications found</td>
                   </tr>
-                ))}
+                ) : (
+                  filteredApplications.map(app => (
+                    <tr key={app._id} className="cert-table-row">
+                      <td className="cert-ticket-id-cell">
+                        🎫 {app.ticketId || `TKT-${app._id.slice(-6).toUpperCase()}`}
+                      </td>
+                      <td>{app.applicantName}</td>
+                      <td>{app.fatherName}</td>
+                      <td>{app.village}</td>
+                      <td>₹ {app.monthlyIncome}</td>
+                      <td>{new Date(app.submittedAt).toLocaleDateString()}</td>
+                      <td>
+                        <span className={getStatusBadge(app.status)}>
+                          {app.status || 'Pending'}
+                        </span>
+                      </td>
+                      <td>
+                        <button 
+                          className="cert-view-btn"
+                          onClick={() => setSelectedApp(app)}
+                        >
+                          📋 Review
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -227,20 +346,20 @@ const AdminCertificatePanel = () => {
         <div className="cert-modal-overlay">
           <div className="cert-modal-content">
             <div className="cert-modal-header">
-              <h3>Review Application</h3>
+              <h3>📄 Review Application</h3>
               <button className="cert-close-modal" onClick={() => setSelectedApp(null)}>✕</button>
             </div>
             
             <div className="cert-modal-body">
               <div className="cert-info-grid">
-                <div><strong>Ticket ID:</strong> TKT-{selectedApp._id.slice(-6).toUpperCase()}</div>
-                <div><strong>Submitted:</strong> {new Date(selectedApp.submittedAt).toLocaleString()}</div>
-                <div><strong>Applicant:</strong> {selectedApp.applicantName}</div>
-                <div><strong>Father's Name:</strong> {selectedApp.fatherName}</div>
-                <div><strong>Village:</strong> {selectedApp.village}</div>
-                <div><strong>Post Office:</strong> {selectedApp.postOffice}</div>
-                <div><strong>Monthly Income:</strong> ₹ {selectedApp.monthlyIncome}</div>
-                <div><strong>Income in Words:</strong> {selectedApp.incomeInWords}</div>
+                <div><strong>🎫 Ticket ID:</strong> {selectedApp.ticketId || `TKT-${selectedApp._id.slice(-6).toUpperCase()}`}</div>
+                <div><strong>📅 Submitted:</strong> {new Date(selectedApp.submittedAt).toLocaleString()}</div>
+                <div><strong>👤 Applicant:</strong> {selectedApp.applicantName}</div>
+                <div><strong>👨 Father's Name:</strong> {selectedApp.fatherName}</div>
+                <div><strong>🏠 Village:</strong> {selectedApp.village}</div>
+                <div><strong>📮 Post Office:</strong> {selectedApp.postOffice}</div>
+                <div><strong>💰 Monthly Income:</strong> ₹ {selectedApp.monthlyIncome}</div>
+                <div><strong>📝 Income in Words:</strong> {selectedApp.incomeInWords}</div>
               </div>
 
               <div className="cert-form-group">
